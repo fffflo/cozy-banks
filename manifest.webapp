@@ -167,6 +167,13 @@
       "verbs": [
         "GET"
       ]
+    },
+    "account": {
+      "description": "Used to send notifications",
+      "type": "io.cozy.accounts",
+      "verbs": [
+        "POST"
+      ]
     }
   }
 }
