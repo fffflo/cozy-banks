@@ -1,0 +1,179 @@
+{
+  "name": "Banks",
+  "slug": "banks",
+  "icon": "icon-banks.svg",
+  "description": "The banking application for Cozy",
+  "category": "cozy",
+  "version": "0.5.0",
+  "licence": "AGPL-3.0",
+  "source": "git://gitlab.cozycloud.cc/labs/cozy-bank.git",
+  "developer": {
+    "name": "Cozy",
+    "url": "https://cozy.io"
+  },
+  "default_locale": "en",
+  "locales": {
+    "en": {
+      "name": "Banks",
+      "short_description": "The banking application for Cozy.",
+      "long_description": "Banks allows you to monitor your banking transactions in your cozy.",
+      "changes": ""
+    },
+    "fr": {
+      "name": "Banks",
+      "short_description": "L'application bancaire pour Cozy.",
+      "long_description": "Banks vous permet de visualiser très facilement vos opérations bancaires directement dans votre Cozy.",
+      "changes": ""
+    }
+  },
+  "langs": [
+    "en",
+    "fr"
+  ],
+  "platforms": [
+    {
+      "type": "ios",
+      "url": "#"
+    },
+    {
+      "type": "android",
+      "url": "#"
+    }
+  ],
+  "editor": "Cozy",
+  "screenshots": [
+    "screenshot1.png"
+  ],
+  "tags": [
+    "bank",
+    "banks",
+    "money",
+    "account"
+  ],
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "services": {
+    "notifications": {
+      "type": "node",
+      "file": "notifications.js",
+      "trigger": "@event io.cozy.bank.operations:CREATED",
+      "debounce": "3m"
+    }
+  },
+  "notifications": {
+    "balance-lower": {
+      "description": "Alert the user when his account balance is lower than a certain value",
+      "collapsible": true,
+      "stateful": true,
+      "multiple": false,
+      "default_priority": "normal",
+      "templates": {}
+    },
+    "health-bill-linked": {
+      "description": "Alert the user when a health bill has been linked to a health expense",
+      "collapsible": false,
+      "stateful": false,
+      "multiple": false,
+      "default_priority": "normal",
+      "templates": {}
+    },
+    "transaction-greater": {
+      "description": "Alert the user when a transaction amount is greater than a certain value",
+      "collapsible": false,
+      "stateful": false,
+      "multiple": false,
+      "default_priority": "normal",
+      "templates": {}
+    }
+  },
+  "permissions": {
+    "bank.groups": {
+      "description": "Manage groups of bank accounts",
+      "type": "io.cozy.bank.groups",
+      "verbs": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    "bank.accounts": {
+      "description": "Used to list your bank accounts",
+      "type": "io.cozy.bank.accounts",
+      "verbs": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    "bank.operations": {
+      "description": "Used to manage your bank operations",
+      "type": "io.cozy.bank.operations",
+      "verbs": [
+        "GET",
+        "POST",
+        "PUT"
+      ]
+    },
+    "bills": {
+      "description": "Manage bills",
+      "type": "io.cozy.bills",
+      "verbs": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    "notifications": {
+      "description": "Used to send notifications",
+      "type": "io.cozy.notifications",
+      "verbs": [
+        "POST"
+      ]
+    },
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "triggers": {
+      "description": "Used to add CTA to collect",
+      "type": "io.cozy.triggers",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "bank.settings": {
+      "description": "Used to manage your bank settings",
+      "type": "io.cozy.bank.settings",
+      "verbs": [
+        "GET",
+        "POST",
+        "PUT"
+      ]
+    },
+    "settings": {
+      "description": "Required by the cozy-bar to display Claudy and know which applications are coming soon",
+      "type": "io.cozy.settings",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "account": {
+      "description": "Used to send notifications",
+      "type": "io.cozy.accounts",
+      "verbs": [
+        "POST"
+      ]
+    }
+  }
+}
